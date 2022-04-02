@@ -2,29 +2,45 @@ class Item {
   int? _id;
   String? _name;
   int? _price;
+  int? _stock;
+  String? _kodeBarang;
 
   int get id => _id!;
 
-  String get name => this._name!;
-  set name(String value) => this._name = value;
+  String get name => _name!;
+  set name(String value) => _name = value;
 
-  get price => this._price;
-  set price(value) => this._price = value;
+  int get price => _price!;
+  set price(int value) => _price = value;
 
-// konstruktor versi 1
-  Item(this._name, this._price);
-// konstruktor versi 2: konversi dari Map ke Item
+  int get stock => _stock!;
+  set stock(int value) => _stock = value;
+
+  String get kodeBarang => _kodeBarang!;
+  set kodeBarang(String value) => _kodeBarang = value;
+
+  Item(
+    this._name,
+    this._price,
+    this._stock,
+    this._kodeBarang,
+  );
+
   Item.fromMap(Map<String, dynamic> map) {
-    this._id = map['id'];
-    this._name = map['name'];
-    this._price = map['price'];
+    _id = map['id'];
+    _name = map['name'];
+    _price = map['price'];
+    _stock = map['stock'];
+    _kodeBarang = map['kodeBarang'];
   }
-  // konversi dari Item ke Map
+
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = Map<String, dynamic>();
-    map['id'] = this._id;
+    Map<String, dynamic> map = <String, dynamic>{};
+    map['id'] = _id;
     map['name'] = name;
     map['price'] = price;
+    map['stock'] = stock;
+    map['kodeBarang'] = kodeBarang;
     return map;
   }
 }
